@@ -9,7 +9,6 @@ on:
         type: choice
         options:
           - dev-saas
-          - prod-saas
       app_version:
         description: 'Application version to deploy'
         required: true
@@ -18,7 +17,7 @@ on:
         description: 'Application name'
         required: false
         type: string
-        default: zippy2
+        default: zippy-cris
 
 jobs:
 
@@ -31,8 +30,8 @@ jobs:
           github-token: ${{ secrets.WORKFLOW_TRIGGER_TOKEN }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
-              owner: 'your-company-io',
-              repo: 'your-company-io-gitops',
+              owner: 'kubefirst-test',
+              repo: 'cris-test-gitops',
               workflow_id: 'update-environment.yaml',
               ref: 'main',
               inputs: {
